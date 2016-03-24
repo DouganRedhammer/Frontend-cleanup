@@ -3,22 +3,23 @@
 Deletes the node_modules and bower_components directories from your frontend.
 
 ## Dependencies
-del
-shelljs
-yargs
+* del
+* shelljs
+* yargs
 
 ## Installation
 
 npm install -g
 
 ## Usage
-
 frontend-cleanup node_modules
+
 frontend-cleanup bower_components
 
 ## Options
 
 --v or --verbose
+
 Display the files and directories that were deleted.
 
 ## License
