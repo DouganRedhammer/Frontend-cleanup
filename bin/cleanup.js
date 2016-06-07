@@ -5,8 +5,19 @@ var yargs = require("yargs");
 var del = require('del');
 
 var argv = yargs.usage("$0 command [options]")
+  .option('r', {
+    type: 'boolean',
+	alias: 'recursive',
+    default: true,
+    describe: 'Recursively delete all.'
+  })
   .command("node_modules", "Deletes the node_modules directory.", function (yargs) {
-	del(['./node_modules/**']).then(function (paths) {
+	
+	var deleteFolders = './node_modules/**';
+	if(yargs.argv.r || yargs.argv.recursive ){
+		deleteFolders = './**/node_modules/**';
+	}
+	del([deleteFolders]).then(function (paths) {
 		if(paths.length > 0){
 			console.log("Removing node_modules")
 			if(argv.verbose || argv.v){
@@ -21,7 +32,11 @@ var argv = yargs.usage("$0 command [options]")
 	};
   })
   .command("bower_components", "Deletes the bower_components directory.", function (yargs) {
-	del(['./bower_components/**']).then(function (paths) {
+	var deleteFolders = './bower_components/**';
+	if(yargs.argv.r || yargs.argv.recursive ){
+		deleteFolders = './**/bower_components/**';
+	}
+	del([deleteFolders]).then(function (paths) {
 		if(paths.length > 0){
 			console.log("Removing bower_components")
 			if(argv.verbose || argv.v){

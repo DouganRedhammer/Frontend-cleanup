@@ -1,6 +1,6 @@
 # Frontend-cleanup
 
-Deletes the node_modules and bower_components directories from your frontend.
+Deletes the node_modules and bower_components directories from your frontend project.
 
 ## Dependencies
 * del
@@ -8,19 +8,48 @@ Deletes the node_modules and bower_components directories from your frontend.
 * yargs
 
 ## Installation
-
-npm install -g
-
+````javascript
+$ npm install -g frontend-cleanup
+````
 ## Usage
-frontend-cleanup node_modules
-
-frontend-cleanup bower_components
-
+````javascript
+$ frontend-cleanup node_modules
+````
+````javascript
+$ frontend-cleanup bower_components
+````
 ## Options
 
---v or --verbose
-
+**-v or --verbose [boolean]**  
 Display the files and directories that were deleted.
+
+**-r or --recursive  [boolean] [default: true]**  
+Display the files and directories that were deleted.
+
+**-h or --help**  
+Show help.
+
+## Examples
+
+Delete all node_modules in the current working directory.
+````javascript
+$ frontend-cleanup node_modules
+````
+
+Delete all bower_components in the current working directory.
+````javascript
+$ frontend-cleanup bower_components
+````
+
+Delete all node_modules in the current working directory, all sub-directories, and display output.
+````javascript
+$ frontend-cleanup node_modules -r -v
+````
+
+Delete all bower_components in the current working directory, all sub-directories, and display output.
+````javascript
+$ frontend-cleanup bower_components -r -v
+````
 
 ## License
 
